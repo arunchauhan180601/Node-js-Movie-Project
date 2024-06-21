@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <%- include("./partials/head") %>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="../uploads/style.css">
+</head>
+
+<body>
+  <%- include("./partials/nav") %>
+
+    <div class="container-main">
+      <div class="container mt-5 ">
+        <div class="row mt-5">
+          <h2 class="fw-bold allHeadingCenter "> <span class="recentMovies">Recent Movies: </span></h2>
+
+          <div class="col-lg-3 col-md-4 mt-4 rounded"><img src="/Images/movie1.jpg" height="350px" width="100%"></div>
+          <div class="col-lg-3 col-md-4 mt-4 rounded"><img src="/Images/movie2.jpg" height="350px" width="100%"></div>
+          <div class="col-lg-3 col-md-4 mt-4 rounded"><img src="/Images/movie3.jpg" height="350px" width="100%"></div>
+          <div class="col-lg-3 col-md-4 mt-4 rounded"><img src="/Images/movie4.jpeg" height="350px" width="100%"></div>
+        </div>
+      </div>
+
+
+
+
+      <div class="container mt-5">
+        <h2 class="fw-bold  allHeadingCenter"><span class="recentMovies">Watch Full Movies: </span></h2>
+
+
+        <div class="container mt-3  d-flex gap-4 justify-content-center flex-wrap  mb-5">
+
+          <% Movies.forEach( (movie)=> { %>
+
+            <div class="card" style="width: 18rem;">
+
+              <video controls style="max-height: 160px;">
+                <source src="<%= movie.Video %>" class="card-img-top">
+                </source>
+              </video>
+
+              <div class="card-body">
+                <h4 class="card-title">
+                  <%= movie.Title %>
+                </h4>
+                <p class="card-text fw-bold">
+                  <%= movie.ProductionName %><i class="fa-solid fa-circle-check"></i>
+                </p>
+                <div class="threebtn d-flex gap-2 ">
+                  <a href="/view/<%= movie._id %>" class="btn btn-warning">View</a>
+                  <a href="/editData/<%= movie._id %>" class="btn btn-dark">Edit</a>
+                  <a href="/deleteData/<%= movie._id %>" class="btn btn-danger">Delete</a>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+        </div>
+      </div>
+
+      <div class="container mt-5 ">
+        <div class="row mt-5">
+          <h2 class="fw-bold allHeadingCenter"> <span class="recentMovies">Most Favourite Movies: </span></h2>
+
+          <div class="col-lg-3 col-md-4 mt-4 rounded"><img src="/Images/movie5.jpg" height="350px" width="100%"></div>
+          <div class="col-lg-3 col-md-4 mt-4 rounded"><img src="/Images/movie6.jpg" height="350px" width="100%"></div>
+          <div class="col-lg-3 col-md-4 mt-4 rounded"><img src="/Images/movie7.jpg" height="350px" width="100%"></div>
+          <div class="col-lg-3 col-md-4 mt-4 rounded"><img src="/Images/movie3.jpg" height="350px" width="100%"></div>
+          <div class="col-lg-3 col-md-4 mt-4 rounded"><img src="/Images/movie4.jpeg" height="350px" width="100%"></div>
+          <div class="col-lg-3 col-md-4 mt-4 rounded"><img src="/Images/movie1.jpg" height="350px" width="100%"></div>
+          <div class="col-lg-3 col-md-4 mt-4 rounded"><img src="/Images/movie2.jpg" height="350px" width="100%"></div>
+          <div class="col-lg-3 col-md-4 mt-4 rounded"><img src="/Images/movie5.jpg" height="350px" width="100%"></div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <%- include("./partials/footer") %>
+      <%- include("./partials/script") %>
+</body>
+
+</html>
