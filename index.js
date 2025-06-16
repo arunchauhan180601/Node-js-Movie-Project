@@ -2,13 +2,14 @@ const express = require("express");
 const connectDB = require("./connection");
 const path= require("path")
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 7000;
+require('dotenv').config();
 const userRoutes = require("./Routes/userRoute");
 const movieRoutes = require("./Routes/movieRoutes")
 var cookieParser = require('cookie-parser')
 const { chechForAuthenticationCookie } = require("./Middleware/auth");
 const Movie = require("./Models/movieModel");
-connectDB("mongodb://127.0.0.1:27017/final_movie_Project").then(()=> {console.log("MongoDb Connected")}).catch((error)=> {console.log(error)});
+connectDB(process.env.MONGO_URL).then(()=> {console.log("MongoDb Connected")}).catch((error)=> {console.log(error)});
 
 // middlewares
 app.use(express.json());
